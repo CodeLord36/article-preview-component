@@ -11,3 +11,8 @@
 
   --shadow-custom: "0px 40px 40px -10px rgba(201, 213, 225, 0.5034)";
 }
+
+body {
+  background-color: var(--color-light-grayish-blue);
+  font-size: 13px;
+}

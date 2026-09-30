@@ -7,7 +7,7 @@ const ArticlePreviewCard = () => {
 
   const toggleShare = () => setIsShareOpen(!isShareOpen);
   return (
-    <section className=" bg-white max-w-2xl w-full flex flex-col overflow-hidden shadow-custom rounded-xl md:max-w-3xl md:flex-row md:rounded-lg ">
+    <section className=" bg-white max-w-2xl w-full flex flex-col overflow-hidden shadow-custom rounded-xl md:max-w-3xl md:flex-row md:rounded-lg md:overflow-visible ">
       {/* Image Section */}
       <div className="w-full h-52 md:w-2/5 md:h-auto ">
         <img
@@ -22,24 +22,24 @@ const ArticlePreviewCard = () => {
         <h1 className="text-very-dark-grayish-blue font-bold text-[17px] mb-4 md:text-[22px] ">
           {ArticleData.title}
         </h1>
-        <p className="text-desaturated-dark-blue text-sm mb-8 leading-relaxed  ">
+        <p className="text-desaturated-dark-blue text-sm mb-8 leading-relaxed md:mb-4  ">
           {ArticleData.description}
         </p>
 
         {/* Author and Share Section */}
-        <section className="flex items-center justify-between ">
+        <section className=" flex items-center justify-between ">
           {/* Author Section */}
           <div className="flex items-center gap-4 ">
             <img
               src={ArticleData.author.avatar}
               alt="Michelle"
-              className="w-12 h-12 rounded-full "
+              className="w-12 h-12 rounded-full md:w-10 md:h-10 "
             />
             <div className="">
-              <p className="text-very-dark-grayish-blue font-bold text-sm ">
+              <p className="text-very-dark-grayish-blue font-bold text-sm md:text-[13px] ">
                 {ArticleData.author.name}
               </p>
-              <p className="text-grayish-blue text-sm ">
+              <p className="text-grayish-blue text-sm md:text-[13px] ">
                 {ArticleData.author.date}
               </p>
             </div>
@@ -49,7 +49,7 @@ const ArticlePreviewCard = () => {
           <button
             onClick={toggleShare}
             aria-label="Toggle share menu"
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors z-20 outline-none ${isShareOpen ? "bg-desaturated-dark-blue" : "bg-light-grayish-blue"} hover:cursor-pointer `}
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors z-30 outline-none ${isShareOpen ? "bg-desaturated-dark-blue" : "bg-light-grayish-blue"} hover:cursor-pointer `}
           >
             <img
               src={ArticleData.share}
@@ -57,8 +57,8 @@ const ArticlePreviewCard = () => {
               className={`w-4 h-4 transition-all ${isShareOpen ? "brightness-200" : "group-hover:brightness-200"} `}
             />
           </button>
+          <SharePopup isVisible={isShareOpen} />
         </section>
-        <SharePopup isVisible={isShareOpen} />
       </article>
     </section>
   );
